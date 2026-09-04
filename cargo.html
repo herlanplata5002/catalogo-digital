@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pantalones Cargo Juveniles - Boutique Virtual</title>
+    <title>Pantalones Cargo - Boutique Virtual</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -34,7 +34,6 @@
             overflow-x: hidden;
         }
 
-        /* Fondo dinámico */
         .ambient-bg {
             position: fixed;
             top: 0;
@@ -86,13 +85,26 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 138, 0, 0.4));
+        }
+
         .logo {
             font-weight: 800;
             font-size: 1.4rem;
             background: linear-gradient(45deg, var(--orange-glow), var(--magenta));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-decoration: none;
         }
 
         .btn-back {
@@ -133,7 +145,6 @@
             margin: 0 auto;
         }
 
-        /* Sección de detalles generales (Tallas y Envíos) */
         .info-bar {
             max-width: 1200px;
             margin: 1.5rem auto 2.5rem auto;
@@ -198,7 +209,7 @@
 
         .img-container {
             width: 100%;
-            height: 350px;
+            height: 380px;
             overflow: hidden;
             position: relative;
         }
@@ -280,25 +291,27 @@
     </div>
 
     <header>
-        <a href="index.html" class="logo">BOUTIQUE VIRTUAL</a>
+        <a href="index.html" class="brand-container">
+            <img src="logo.png" alt="Logo Boutique" class="brand-logo">
+            <div class="logo">BOUTIQUE VIRTUAL</div>
+        </a>
         <a href="index.html" class="btn-back">← Volver al Menú</a>
     </header>
 
     <section class="hero">
-        <h1>Colección Cargo Juvenil</h1>
-        <p>Selecciona tu color preferido para consultar disponibilidad y realizar tu pedido directamente por WhatsApp.</p>
+        <h1>Colección Pantalones Cargo</h1>
+        <p>Estilo urbano y comodidad absoluta. Explora los diferentes colores disponibles para esta temporada.</p>
     </section>
 
-    <!-- Resumen de Tallas y Envíos -->
     <div class="info-bar">
         <div class="info-box">
             <div class="info-item">
-                <span>Tallas Disponibles</span>
-                <strong>28 - 30 - 32 - 34</strong>
+                <span>Precio Único</span>
+                <strong>Bs. 80</strong>
             </div>
             <div class="info-item">
-                <span>Material</span>
-                <strong>Gabardina / Drill Resistente</strong>
+                <span>Tallas Disponibles</span>
+                <strong>S - M - L</strong>
             </div>
             <div class="info-item">
                 <span>Envíos / Entregas</span>
@@ -310,77 +323,77 @@
     <main class="container">
         <div class="products-grid">
 
-            <!-- COLOR 1 -->
+            <!-- CARGO 1 -->
             <div class="product-card">
                 <div class="img-container">
-                    <img src="cargo_1.jfif" alt="Pantalón Cargo - Color 1">
-                    <span class="badge-color">Color 1 (Principal)</span>
+                    <img src="cargo_1.jfif" alt="Pantalón Cargo Modelo 1">
+                    <span class="badge-color">Modelo 1</span>
                 </div>
                 <div class="card-body">
-                    <h3>Pantalón Cargo Juvenil</h3>
-                    <div class="price">Bs. 180</div>
-                    <a href="https://wa.me/59161207445?text=Hola!%20Quisiera%20pedir%20información%20del%20Pantalón%20Cargo%20en%20Color%201" target="_blank" class="btn-whatsapp">
-                        📱 Pedir este color
+                    <h3>Pantalón Cargo Urbano</h3>
+                    <div class="price">Bs. 80</div>
+                    <a href="https://wa.me/59161207445?text=Hola!%20Quisiera%20pedir%20información%20del%20Pantalón%20Cargo%20Modelo%201%20a%20Bs.%2080" target="_blank" class="btn-whatsapp">
+                        📱 Pedir este modelo
                     </a>
                 </div>
             </div>
 
-            <!-- COLOR 2 -->
+            <!-- CARGO 2 -->
             <div class="product-card">
                 <div class="img-container">
-                    <img src="cargo_2.jfif" alt="Pantalón Cargo - Color 2">
-                    <span class="badge-color">Color 2</span>
+                    <img src="cargo_2.jfif" alt="Pantalón Cargo Modelo 2">
+                    <span class="badge-color">Modelo 2</span>
                 </div>
                 <div class="card-body">
-                    <h3>Pantalón Cargo Juvenil</h3>
-                    <div class="price">Bs. 180</div>
-                    <a href="https://wa.me/59161207445?text=Hola!%20Quisiera%20pedir%20información%20del%20Pantalón%20Cargo%20en%20Color%202" target="_blank" class="btn-whatsapp">
-                        📱 Pedir este color
+                    <h3>Pantalón Cargo Urbano</h3>
+                    <div class="price">Bs. 80</div>
+                    <a href="https://wa.me/59161207445?text=Hola!%20Quisiera%20pedir%20información%20del%20Pantalón%20Cargo%20Modelo%202%20a%20Bs.%2080" target="_blank" class="btn-whatsapp">
+                        📱 Pedir este modelo
                     </a>
                 </div>
             </div>
 
-            <!-- COLOR 3 -->
+            <!-- CARGO 3 -->
             <div class="product-card">
                 <div class="img-container">
-                    <img src="cargo_3.jfif" alt="Pantalón Cargo - Color 3">
-                    <span class="badge-color">Color 3</span>
+                    <img src="cargo_3.jfif" alt="Pantalón Cargo Modelo 3">
+                    <span class="badge-color">Modelo 3</span>
                 </div>
                 <div class="card-body">
-                    <h3>Pantalón Cargo Juvenil</h3>
-                    <div class="price">Bs. 180</div>
-                    <a href="https://wa.me/59161207445?text=Hola!%20Quisiera%20pedir%20información%20del%20Pantalón%20Cargo%20en%20Color%203" target="_blank" class="btn-whatsapp">
-                        📱 Pedir este color
+                    <h3>Pantalón Cargo Urbano</h3>
+                    <div class="price">Bs. 80</div>
+                    <a href="https://wa.me/59161207445?text=Hola!%20Quisiera%20pedir%20información%20del%20Pantalón%20Cargo%20Modelo%203%20a%20Bs.%2080" target="_blank" class="btn-whatsapp">
+                        📱 Pedir este modelo
                     </a>
                 </div>
             </div>
 
-            <!-- COLOR 4 -->
+            <!-- CARGO 4 -->
             <div class="product-card">
                 <div class="img-container">
-                    <img src="cargo_4.jfif" alt="Pantalón Cargo - Color 4">
-                    <span class="badge-color">Color 4</span>
+                    <img src="cargo_4.jfif" alt="Pantalón Cargo Modelo 4">
+                    <span class="badge-color">Modelo 4</span>
                 </div>
                 <div class="card-body">
-                    <h3>Pantalón Cargo Juvenil</h3>
-                    <div class="price">Bs. 180</div>
-                    <a href="https://wa.me/59161207445?text=Hola!%20Quisiera%20pedir%20información%20del%20Pantalón%20Cargo%20en%20Color%204" target="_blank" class="btn-whatsapp">
-                        📱 Pedir este color
+                    <h3>Pantalón Cargo Urbano</h3>
+                    <div class="price">Bs. 80</div>
+                    <a href="https://wa.me/59161207445?text=Hola!%20Quisiera%20pedir%20información%20del%20Pantalón%20Cargo%20Modelo%204%20a%20Bs.%2080" target="_blank" class="btn-whatsapp">
+                        📱 Pedir este modelo
                     </a>
                 </div>
             </div>
 
-            <!-- COLOR 5 -->
+            <!-- CARGO 5 -->
             <div class="product-card">
                 <div class="img-container">
-                    <img src="cargo_5.jfif" alt="Pantalón Cargo - Color 5">
-                    <span class="badge-color">Color 5</span>
+                    <img src="cargo_5.jfif" alt="Pantalón Cargo Modelo 5">
+                    <span class="badge-color">Modelo 5</span>
                 </div>
                 <div class="card-body">
-                    <h3>Pantalón Cargo Juvenil</h3>
-                    <div class="price">Bs. 180</div>
-                    <a href="https://wa.me/59161207445?text=Hola!%20Quisiera%20pedir%20información%20del%20Pantalón%20Cargo%20en%20Color%205" target="_blank" class="btn-whatsapp">
-                        📱 Pedir este color
+                    <h3>Pantalón Cargo Urbano</h3>
+                    <div class="price">Bs. 80</div>
+                    <a href="https://wa.me/59161207445?text=Hola!%20Quisiera%20pedir%20información%20del%20Pantalón%20Cargo%20Modelo%205%20a%20Bs.%2080" target="_blank" class="btn-whatsapp">
+                        📱 Pedir este modelo
                     </a>
                 </div>
             </div>
