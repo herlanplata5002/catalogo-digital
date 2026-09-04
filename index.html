@@ -73,7 +73,7 @@
         }
 
         header {
-            padding: 2rem 5%;
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -84,9 +84,24 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        /* Estilo para integrar el logo sin fondo junto al texto o solo el logo */
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 138, 0, 0.4));
+        }
+
         .logo {
             font-weight: 800;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             background: linear-gradient(45deg, var(--orange-glow), var(--magenta));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -166,7 +181,7 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(13, 6, 20, 0.8);
+            background: rgba(13, 6, 20, 0.85);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 0.5rem 1rem;
@@ -222,7 +237,10 @@
     </div>
 
     <header>
-        <div class="logo">BOUTIQUE VIRTUAL</div>
+        <a href="index.html" class="brand-container">
+            <img src="logo.png" alt="Logo Boutique" class="brand-logo">
+            <div class="logo">BOUTIQUE VIRTUAL</div>
+        </a>
     </header>
 
     <section class="hero">
@@ -237,7 +255,7 @@
             <a href="cargo.html" class="category-card">
                 <div class="img-container">
                     <img src="cargo_1.jfif" alt="Pantalones Cargo Juveniles">
-                    <span class="badge-info">5 Colores</span>
+                    <span class="badge-info">Todo a Bs. 80</span>
                 </div>
                 <div class="card-content">
                     <h2>Pantalones Cargo Juveniles</h2>
@@ -250,7 +268,7 @@
             <a href="formales.html" class="category-card">
                 <div class="img-container">
                     <img src="formal_1.jfif" alt="Pantalones Formales para Dama">
-                    <span class="badge-info">3 Modelos</span>
+                    <span class="badge-info">Todo a Bs. 80</span>
                 </div>
                 <div class="card-content">
                     <h2>Pantalones Formales</h2>
@@ -259,15 +277,15 @@
                 </div>
             </a>
 
-            <!-- LÍNEA 3: BLAZERS JUVENILES -->
+            <!-- LÍNEA 3: BLAZERS JUVENILES (Actualizado con blazer_1.jfif y precio Bs. 80) -->
             <a href="blazers.html" class="category-card">
                 <div class="img-container">
-                    <img src="cargo_3.jfif" alt="Blazers Juveniles Tipo Traje" style="filter: grayscale(0.6);">
-                    <span class="badge-info">Próximamente</span>
+                    <img src="blazer_1.jfif" alt="Blazers Juveniles Tipo Traje">
+                    <span class="badge-info">Bs. 80</span>
                 </div>
                 <div class="card-content">
                     <h2>Blazers Juveniles</h2>
-                    <p>Corte tipo traje para dama. Diseños elegantes para destacar en cualquier ocasión.</p>
+                    <p>Corte tipo traje para dama. Diseños elegantes en color beige claro para destacar en cualquier ocasión.</p>
                     <div class="btn-view">Ver Colección Completa</div>
                 </div>
             </a>
