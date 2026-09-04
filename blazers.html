@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blazers Juveniles - Boutique Virtual</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple-deep: #0D0614;
+            --purple-main: #6B26D9;
+            --magenta: #D926A9;
+            --orange-main: #FF5E1A;
+            --orange-glow: #FF8A00;
+            --amber: #FFB800;
+            --whatsapp-green: #25D366;
+            --whatsapp-hover: #1EBE57;
+            --text-light: #F4F0FA;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--purple-deep);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Fondo dinámico */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            filter: blur(90px);
+            opacity: 0.5;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            animation: float 16s infinite alternate ease-in-out;
+        }
+
+        .orb-1 {
+            width: 45vw;
+            height: 45vw;
+            background: radial-gradient(circle, var(--purple-main), var(--magenta));
+            top: -15%;
+            left: -10%;
+        }
+
+        .orb-2 {
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, var(--orange-main), var(--amber));
+            bottom: -10%;
+            right: -5%;
+            animation-duration: 20s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(60px, 80px) rotate(180deg); }
+        }
+
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            background: linear-gradient(45deg, var(--orange-glow), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .btn-back {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-light);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-3px);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 2.5rem 1.5rem 1rem 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFF, var(--orange-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero p {
+            color: #B3A4C9;
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Sección de detalles generales */
+        .info-bar {
+            max-width: 1200px;
+            margin: 1.5rem auto 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.2rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 1rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .info-item span {
+            display: block;
+            font-size: 0.8rem;
+            color: #A393BF;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.2rem;
+        }
+
+        .info-item strong {
+            font-size: 1.05rem;
+            color: var(--orange-glow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 5rem 1.5rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 138, 0, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 380px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .img-container img {
+            transform: scale(1.05);
+        }
+
+        .badge-color {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(13, 6, 20, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-body h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .price {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--amber);
+            margin-bottom: 1.2rem;
+        }
+
+        .btn-whatsapp {
+            width: 100%;
+            padding: 0.85rem;
+            border-radius: 12px;
+            border: none;
+            background: var(--whatsapp-green);
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .btn-whatsapp:hover {
+            background: var(--whatsapp-hover);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <header>
+        <a href="index.html" class="logo">BOUTIQUE VIRTUAL</a>
+        <a href="index.html" class="btn-back">← Volver al Menú</a>
+    </header>
+
+    <section class="hero">
+        <h1>Colección Blazers Juveniles</h1>
+        <p>Diseños sofisticados y modernos para destacar con estilo en cualquier evento u ocasión especial.</p>
+    </section>
+
+    <!-- Resumen de Tallas y Envíos -->
+    <div class="info-bar">
+        <div class="info-box">
+            <div class="info-item">
+                <span>Tallas Disponibles</span>
+                <strong>S - M - L</strong>
+            </div>
+            <div class="info-item">
+                <span>Color Exclusivo</span>
+                <strong>Beige Claro</strong>
+            </div>
+            <div class="info-item">
+                <span>Envíos / Entregas</span>
+                <strong>La Paz / El Alto y Envíos a todo Bolivia</strong>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="products-grid">
+
+            <!-- BLAZER BEIGE CLARO -->
+            <div class="product-card">
+                <div class="img-container">
+                    <img src="blazer_1.jfif" alt="Blazer Juvenil Beige Claro">
+                    <span class="badge-color">Beige Claro</span>
+                </div>
+                <div class="card-body">
+                    <h3>Blazer Juvenil Elegante</h3>
+                    <div class="price">Bs. 220</div>
+                    <a href="https://wa.me/59161207445?text=Hola!%20Quisiera%20pedir%20información%20del%20Blazer%20Juvenil%20en%20color%20Beige%20Claro" target="_blank" class="btn-whatsapp">
+                        📱 Pedir este modelo
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
