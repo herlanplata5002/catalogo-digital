@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Exclusivo - Moda Dama</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple-deep: #0D0614;
+            --purple-main: #6B26D9;
+            --magenta: #D926A9;
+            --orange-main: #FF5E1A;
+            --orange-glow: #FF8A00;
+            --amber: #FFB800;
+            --text-light: #F4F0FA;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--purple-deep);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Fondo de orbes animado */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            filter: blur(90px);
+            opacity: 0.5;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            animation: float 16s infinite alternate ease-in-out;
+        }
+
+        .orb-1 {
+            width: 45vw;
+            height: 45vw;
+            background: radial-gradient(circle, var(--purple-main), var(--magenta));
+            top: -15%;
+            left: -10%;
+        }
+
+        .orb-2 {
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, var(--orange-main), var(--amber));
+            bottom: -10%;
+            right: -5%;
+            animation-duration: 20s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(60px, 80px) rotate(180deg); }
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.6rem;
+            background: linear-gradient(45deg, var(--orange-glow), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        /* NAVEGACIÓN POR CATEGORÍAS */
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cat-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-light);
+            padding: 0.8rem 1.6rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .cat-btn.active, .cat-btn:hover {
+            background: linear-gradient(90deg, var(--purple-main), var(--orange-main));
+            border-color: transparent;
+            box-shadow: 0 8px 25px rgba(217, 38, 169, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem 5rem 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFF, var(--orange-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title p {
+            color: #B3A4C9;
+            margin-top: 0.5rem;
+        }
+
+        /* GRID DE PRODUCTOS */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 138, 0, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 340px;
+            overflow: hidden;
+            position: relative;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .img-container img {
+            transform: scale(1.06);
+        }
+
+        .badge-color {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(13, 6, 20, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #FFF;
+        }
+
+        /* ETIQUETA AGOTADO */
+        .badge-soldout {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #E63946;
+            color: white;
+            font-weight: 800;
+            font-size: 0.75rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.15rem;
+        }
+
+        .price-tag {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--amber);
+        }
+
+        .product-info p {
+            color: #A393BF;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .btn-ws {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(90deg, #25D366, #128C7E);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-ws:hover {
+            opacity: 0.9;
+        }
+
+        .btn-ws.disabled {
+            background: #4A4A5A;
+            cursor: not-allowed;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* SECCIONES EN DESARROLLO */
+        .coming-soon-box {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--card-bg);
+            border: 1px dashed var(--card-border);
+            border-radius: 24px;
+            margin-top: 1rem;
+        }
+
+        .coming-soon-box h3 {
+            font-size: 1.8rem;
+            color: var(--amber);
+            margin-bottom: 0.5rem;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <header>
+        <div class="logo">BOUTIQUE VIRTUAL</div>
+    </header>
+
+    <!-- NAVEGACIÓN ENTRE LÍNEAS DE PRODUCTO -->
+    <nav class="category-nav">
+        <button class="cat-btn active" onclick="switchTab('cargo', this)">Pantalones Cargo Juveniles</button>
+        <button class="cat-btn" onclick="switchTab('formales', this)">Pantalones Formales</button>
+        <button class="cat-btn" onclick="switchTab('blazers', this)">Blazers Juveniles</button>
+    </nav>
+
+    <main class="container">
+
+        <!-- LÍNEA 1: PANTALONES CARGO -->
+        <section id="cargo" class="tab-content active">
+            <div class="section-title">
+                <h2>Pantalón Cargo Juvenil para Dama</h2>
+                <p>Estilo urbano, cómodo y versátil.</p>
+            </div>
+
+            <div class="product-grid">
+                <!-- Color 1 -->
+                <div class="product-card">
+                    <div class="img-container">
+                        <img src="cargo_1.jfif" alt="Pantalón Cargo Beige Claro">
+                        <span class="badge-color">Beige Claro</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Pantalón Cargo</h3>
+                            <span class="price-tag">Bs. 80.-</span>
+                        </div>
+                        <p>Corte juvenil con bolsillos laterales funcionales. Tono Beige Claro.</p>
+                        <a href="https://wa.me/?text=Hola,%20me%20interesa%20el%20Pantalón%20Cargo%20en%20color%20Beige%20Claro%20(Bs.%2080.-)" target="_blank" class="btn-ws">Pedir por WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Color 2 -->
+                <div class="product-card">
+                    <div class="img-container">
+                        <img src="cargo_2.jfif" alt="Pantalón Cargo Café">
+                        <span class="badge-color">Café</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Pantalón Cargo</h3>
+                            <span class="price-tag">Bs. 80.-</span>
+                        </div>
+                        <p>Tono cálido y elegante. Ajuste perfecto a la cintura. Color Café.</p>
+                        <a href="https://wa.me/?text=Hola,%20me%20interesa%20el%20Pantalón%20Cargo%20en%20color%20Café%20(Bs.%2080.-)" target="_blank" class="btn-ws">Pedir por WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Color 3 -->
+                <div class="product-card">
+                    <div class="img-container">
+                        <img src="cargo_3.jfif" alt="Pantalón Cargo Negro">
+                        <span class="badge-color">Negro</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Pantalón Cargo</h3>
+                            <span class="price-tag">Bs. 80.-</span>
+                        </div>
+                        <p>El básico infaltable. Estilo moderno, combina con todo. Color Negro.</p>
+                        <a href="https://wa.me/?text=Hola,%20me%20interesa%20el%20Pantalón%20Cargo%20en%20color%20Negro%20(Bs.%2080.-)" target="_blank" class="btn-ws">Pedir por WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Color 4 -->
+                <div class="product-card">
+                    <div class="img-container">
+                        <img src="cargo_4.jfif" alt="Pantalón Cargo Verde Militar">
+                        <span class="badge-color">Verde Militar</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Pantalón Cargo</h3>
+                            <span class="price-tag">Bs. 80.-</span>
+                        </div>
+                        <p>El color clásico del estilo cargo. Diseño dinámico y resistente.</p>
+                        <a href="https://wa.me/?text=Hola,%20me%20interesa%20el%20Pantalón%20Cargo%20en%20color%20Verde%20Militar%20(Bs.%2080.-)" target="_blank" class="btn-ws">Pedir por WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Color 5 (AGOTADO) -->
+                <div class="product-card">
+                    <div class="img-container">
+                        <img src="cargo_5.jfif" alt="Pantalón Cargo Blanco">
+                        <span class="badge-soldout">Agotado</span>
+                        <span class="badge-color">Blanco</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Pantalón Cargo</h3>
+                            <span class="price-tag">Bs. 80.-</span>
+                        </div>
+                        <p>Look fresco y destacado. Tela de alta calidad con entalle cómodo.</p>
+                        <a href="#" class="btn-ws disabled">Agotado temporales</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LÍNEA 2: PANTALONES FORMALES (ACTIVA) -->
+        <section id="formales" class="tab-content">
+            <div class="section-title">
+                <h2>Pantalones Formales para Dama</h2>
+                <p>Elegancia y comodidad para el trabajo, oficina o escuela.</p>
+            </div>
+
+            <div class="product-grid">
+                <!-- Formal 1 -->
+                <div class="product-card">
+                    <div class="img-container">
+                        <img src="formal_1.jfif" alt="Pantalón Formal Opción 1">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Pantalón Formal Dama</h3>
+                            <span class="price-tag">Bs. 80.-</span>
+                        </div>
+                        <p>Corte elegante de alta caída, ideal para uso diario en el trabajo o institución escolar.</p>
+                        <a href="https://wa.me/?text=Hola,%20me%20interesa%20el%20Pantalón%20Formal%20Modelo%201%20(Bs.%2080.-)" target="_blank" class="btn-ws">Pedir por WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Formal 2 -->
+                <div class="product-card">
+                    <div class="img-container">
+                        <img src="formal_2.jfif" alt="Pantalón Formal Opción 2">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Pantalón Formal Dama</h3>
+                            <span class="price-tag">Bs. 80.-</span>
+                        </div>
+                        <p>Diseño estilizado con excelente acabado en costuras y ajuste cómodo a la cintura.</p>
+                        <a href="https://wa.me/?text=Hola,%20me%20interesa%20el%20Pantalón%20Formal%20Modelo%202%20(Bs.%2080.-)" target="_blank" class="btn-ws">Pedir por WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Formal 3 -->
+                <div class="product-card">
+                    <div class="img-container">
+                        <img src="formal_3.jfif" alt="Pantalón Formal Opción 3">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Pantalón Formal Dama</h3>
+                            <span class="price-tag">Bs. 80.-</span>
+                        </div>
+                        <p>Confección ejecutiva y juvenil. Tela de vestir formal resistente al uso diario.</p>
+                        <a href="https://wa.me/?text=Hola,%20me%20interesa%20el%20Pantalón%20Formal%20Modelo%203%20(Bs.%2080.-)" target="_blank" class="btn-ws">Pedir por WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LÍNEA 3: BLAZERS JUVENILES (PRÓXIMAMENTE) -->
+        <section id="blazers" class="tab-content">
+            <div class="coming-soon-box">
+                <h3>Colección Blazers Juveniles</h3>
+                <p>Nuevos diseños tipo traje para dama en producción. ¡Mantente al tanto!</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function switchTab(tabId, btnElement) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.add('active');
+            btnElement.classList.add('active');
+        }
+    </script>
+</body>
+</html>
