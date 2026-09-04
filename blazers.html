@@ -34,7 +34,6 @@
             overflow-x: hidden;
         }
 
-        /* Fondo dinámico */
         .ambient-bg {
             position: fixed;
             top: 0;
@@ -86,13 +85,26 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 138, 0, 0.4));
+        }
+
         .logo {
             font-weight: 800;
             font-size: 1.4rem;
             background: linear-gradient(45deg, var(--orange-glow), var(--magenta));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-decoration: none;
         }
 
         .btn-back {
@@ -133,7 +145,6 @@
             margin: 0 auto;
         }
 
-        /* Sección de detalles generales */
         .info-bar {
             max-width: 1200px;
             margin: 1.5rem auto 2.5rem auto;
@@ -282,7 +293,10 @@
     </div>
 
     <header>
-        <a href="index.html" class="logo">BOUTIQUE VIRTUAL</a>
+        <a href="index.html" class="brand-container">
+            <img src="logo.png" alt="Logo Boutique" class="brand-logo">
+            <div class="logo">BOUTIQUE VIRTUAL</div>
+        </a>
         <a href="index.html" class="btn-back">← Volver al Menú</a>
     </header>
 
@@ -291,7 +305,6 @@
         <p>Diseños sofisticados y modernos para destacar con estilo en cualquier evento u ocasión especial.</p>
     </section>
 
-    <!-- Resumen de Tallas y Envíos -->
     <div class="info-bar">
         <div class="info-box">
             <div class="info-item">
@@ -312,7 +325,7 @@
     <main class="container">
         <div class="products-grid">
 
-            <!-- BLAZER BEIGE CLARO -->
+            <!-- BLAZER BEIGE CLARO (Precio actualizado a Bs. 80) -->
             <div class="product-card">
                 <div class="img-container">
                     <img src="blazer_1.jfif" alt="Blazer Juvenil Beige Claro">
@@ -320,8 +333,8 @@
                 </div>
                 <div class="card-body">
                     <h3>Blazer Juvenil Elegante</h3>
-                    <div class="price">Bs. 220</div>
-                    <a href="https://wa.me/59161207445?text=Hola!%20Quisiera%20pedir%20información%20del%20Blazer%20Juvenil%20en%20color%20Beige%20Claro" target="_blank" class="btn-whatsapp">
+                    <div class="price">Bs. 80</div>
+                    <a href="https://wa.me/59161207445?text=Hola!%20Quisiera%20pedir%20información%20del%20Blazer%20Juvenil%20en%20color%20Beige%20Claro%20a%20Bs.%2080" target="_blank" class="btn-whatsapp">
                         📱 Pedir este modelo
                     </a>
                 </div>
